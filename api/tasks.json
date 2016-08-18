@@ -1,0 +1,17 @@
+[
+  {
+  	"taskname": "Progress 1", 
+  	"color": "#0E90D2", 
+  	"percent": "48%"
+  },
+  {
+  	"taskname": "Progress 2", 
+  	"color": "red", 
+  	"percent": "85%"
+  },
+  {
+  	"taskname": "Progress 3", 
+  	"color": "green", 
+  	"percent": "60%"
+  }
+]

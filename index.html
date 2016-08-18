@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Prasanth Kumar">
+    <meta name="keywords" content="HTML,UI,Dashboard"> <!-- keywords for search engine -->
+    <meta name="description" content="HTML UI Dashboard"> <!-- Doc description -->
+    <title>UI Dashboard</title>
+    <!-- Starting CSS reference section -->
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <!-- Ending CSS reference section -->
+
+    <!-- Starting Angular javascript lib -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <!-- Ending Angular javascript lib -->
+
+    <!-- Starting app.js section-->
+    <script src="js/app.js"></script>
+    <!-- Ending app.js section-->
+    
+ </head>
+ <body ng-app="myDashboard">
+    <!-- PAGE HEADER START-->
+    <header ng-controller="headerCtrl" class="page-header">
+      <a href="#sider" id="toggle" class="current-tab"><i class="fa fa-bars" aria-hidden="true" id="toggle-bar"></i></a>
+      <a href="#" id="header-logo"></a>
+        <nav>
+            <ul >
+                <li><a href="#" ><i class="fa fa-server" aria-hidden="true"></i></a><span ng-bind="accessories" class="label danger span7"></span></li>
+                <li><a href="#"><i class="fa fa-paper-plane " aria-hidden="true"></i></a><span ng-bind="messages" class="label success span7"></span></li>
+                <li><a href="#"><i class="fa fa-bell" aria-hidden="true"></i></a><span ng-bind="notifications" class="label alert span7"></span></li>
+                <li class="header-left"><a href="#" class="user-log">{{user}}<i class="fa fa-caret-down" aria-hidden="true"></i></a></li>
+                <li class="header-left"><a href="#" ><img src="http://khorezmsoft.uz/uz/img/client1.png" /></a></li>
+                <li class="header-left"><a href="#" ><i class="fa fa-headphones" aria-hidden="true"></i></a></li>
+                <li class="header-left"><a href="#" ><i class="fa fa-comments" aria-hidden="true"></i></a></li> 
+            </ul>
+        </nav>
+    </header>
+    <!-- PAGE HEADER END-->
+    <!-- PAGE SIDEBAR START-->
+    <aside ng-controller="sidebarCtrl" id="sider" class="page-sidebar">
+       <section>
+        <ul>
+          <li class="current-tab"><a href="#">
+                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                <span class="sidebar-span">Dashboard</span>
+              </a>
+          </li>
+          <li><a href="#">
+                <i class="fa fa-building" aria-hidden="true"></i>
+                <span class="sidebar-span">UI Elements</span>          
+                <i class="fa fa-caret-right side-right" aria-hidden="true"></i>  
+              </a>
+          </li>
+          <li><a href="#">
+                <i class="fa fa-cogs" aria-hidden="true"></i>
+                <span class="sidebar-span">Components</span>
+                <i class="fa fa-caret-right side-right" aria-hidden="true"></i> 
+              </a>
+          </li>
+          <li><a href="#">
+                <i class="fa fa-book" aria-hidden="true"></i>
+                <span class="sidebar-span">Form Stuff</span>
+                <i class="fa fa-caret-right side-right" aria-hidden="true"></i> 
+              </a>
+          </li>
+          <li><a href="#">
+                <i class="fa fa-tasks" aria-hidden="true"></i>
+                <span class="sidebar-span">Data Tables</span>
+                <i class="fa fa-caret-right side-right" aria-hidden="true"></i> 
+              </a>
+          </li>
+          <li><a href="#">
+                <i class="fa fa-envira" aria-hidden="true"></i>
+                <span class="sidebar-span">Icons</span>
+                <i class="fa fa-caret-right side-right" aria-hidden="true"></i> 
+              </a>
+          </li>
+          <li><a href="#">
+                <i class="fa fa-wpforms" aria-hidden="true"></i>
+                <span class="sidebar-span">Sample Page</span>
+               <i class="fa fa-caret-right side-right" aria-hidden="true"></i> 
+              </a>
+          </li>
+          <li><a href="#">
+                <i class="fa fa-external-link-square" aria-hidden="true"></i>
+                <span class="sidebar-span">Extras</span>
+                <i class="fa fa-caret-right side-right" aria-hidden="true"></i> 
+              </a>
+          </li>
+          <li><a href="#">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                <span class="sidebar-span">Login Page</span>
+                <i class="fa fa-caret-right side-right" aria-hidden="true"></i> 
+              </a>
+          </li>     
+        </ul>
+      </section>
+    </aside>
+    <!-- PAGE SIDEBAR END-->
+    <!-- PAGE MAIN-CONTENT START-->
+    <main ng-controller="mainCtrl as main" class="page-main">
+      <div class="container">
+         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+         <section ng-controller="pagetitleCtrl" class="container-title">
+                <div class="container-padding">
+                    <h3>Dashboard</h3>
+                    <ul class="breadcrumb">
+                       <li>
+                           <a href="#">Home</a>
+                           <span class="divider">/</span>
+                       </li>
+                       <li>
+                           <a href="#">UI Lab</a>
+                           <span class="divider">/</span>
+                       </li>
+                       <li>Dashboard</li>
+                       <li class="pull-right search">
+                           <form action="#">
+                               <div class="input-area search-input-area">
+                                   <input type="text">
+                                   <button class="btn-size" type="button"><i class="fa fa-search icon-padding" aria-hidden="true"></i> </button>
+                               </div>
+                           </form>
+                       </li>
+                    </ul>
+                 </div>
+          </section>
+          <!-- END PAGE TITLE & BREADCRUMB-->
+
+          <!-- BEGIN PAGE CONTENT-->
+          <section ng-controller="pagecontentCtrl" class="container-body">
+              <!-- FIRST ROW STARTS IN PAGE CONTENT-->
+              <div ng-controller="widgetCtrl" class="container-row">
+                    <div class="container-block container-block-orange">
+                        <a href="#">
+                            <i class="fa fa-user icon-padding" aria-hidden="true"></i>
+                            <div class="count">{{newUsers}}</div>
+                            <div class="status">New Users</div>
+                        </a>
+                    </div>
+                    <div class="container-block container-block-yellow">
+                        <a href="#">
+                            <i class="fa fa-user icon-padding" aria-hidden="true"></i>
+                            <div class="count">{{"+" + sales}}</div>
+                            <div class="status">Sales</div>
+                        </a>
+                    </div>
+                    <div class="container-block container-block-grey">
+                        <a href="#">
+                            <i class="fa fa-user icon-padding" aria-hidden="true"></i>
+                            <div class="count">{{comments}}</div>
+                            <div class="status">Comments</div>
+                        </a>
+                    </div>
+                    <div class="container-block container-block-blue double">
+                        <a href="#">
+                            <i class="fa fa-user icon-padding" aria-hidden="true"></i>
+                            <div class="count">{{"+" + visitors}}</div>
+                            <div class="status">Uniq visitors</div>
+                        </a>
+                    </div>
+                    <div class="container-block container-block-red">
+                        <a href="#">
+                            <i class="fa fa-user icon-padding" aria-hidden="true"></i>
+                            <div class="count">{{updates}}</div>
+                            <div class="status">Updates</div>
+                        </a>
+                    </div>
+              </div>
+              <!-- FIRST ROW ENDS IN PAGE CONTENT-->
+
+              <!-- SECOND ROW IN STARTS PAGE CONTENT-->
+              <div ng-controller="widgetCtrl" class="container-row">
+                    <div class="container-block container-block-blue">
+                        <a href="#">
+                            <i class="fa fa-user icon-padding" aria-hidden="true"></i>
+                            <div class="count">{{newOrders}}</div>
+                            <div class="status">New Orders</div>
+                        </a>
+                    </div>
+                    <div class="container-block container-block-green double">
+                        <a href="#">
+                            <i class="fa fa-user icon-padding" aria-hidden="true"></i>
+                            <div class="count">{{"$" + stock}}</div>
+                            <div class="status">Stock</div>
+                        </a>
+                    </div>
+                    <div class="container-block container-block-orange">
+                        <a href="#">
+                            <i class="fa fa-user icon-padding" aria-hidden="true"></i>
+                            <div class="count">{{messages}}</div>
+                            <div class="status">Messages</div>
+                        </a>
+                    </div>
+                    <div class="container-block container-block-purple">
+                        <a href="#">
+                            <i class="fa fa-user icon-padding" aria-hidden="true"></i>
+                            <div class="count">{{cancelled}}</div>
+                            <div class="status">Cancelled</div>
+                        </a>
+                    </div>
+                    <div class="container-block container-block-grey ">
+                        <a href="#">
+                            <i class="fa fa-user icon-padding" aria-hidden="true"></i>
+                            <div class="count">{{"$" + profit}}</div>
+                            <div class="status">Total Profit</div>
+                        </a>
+                    </div>
+                </div>
+                <!-- SECOND ROW ENDS IN PAGE CONTENT-->
+            
+                <div class="space10"></div>
+
+                <!-- THIRD ROW STARTS IN PAGE CONTENT-->
+                               
+                <div class="container-row">
+                    <!-- NOTIFICATIONS PORTAL-->
+
+                   <div class="row-block-one">
+                                 
+                     <div ng-controller="notificationsCtrl" class="widget blue">
+                          <div class="widget-title">
+                               <h4><i class="fa fa-bell-o icon-padding" aria-hidden="true"></i> Notifications </h4>
+                            <span class="widget-options">
+                                 <a href="#" class="fa fa-angle-down icon-padding" aria-hidden="true"></a>
+                                 <a href="#" class="fa fa-times icon-padding" aria-hidden="true"></a>
+                            </span>
+                          </div>
+                          <div class="widget-body">
+                             <ul class="item-list"  style="overflow: hidden; width: auto; height: 320px;" data-always-visible="1">
+                                 <li ng-repeat="notification in notifications">
+                                     <span class="main-label {{notification.label}}"><i class="fa fa-bell-o icon-padding" aria-hidden="true"></i></span>
+                                     <span>{{notification.notify}}</span>
+                                     <div class="pull-right">
+                                       <span class="small italic ">{{notification.time}}</span>
+                                     </div>
+                                 </li>
+                                 
+                              </ul>
+                              <a href="#" class="pull-right down-notify">View all notifications</a>
+                              <div class="space10"></div>
+                              <div class="clearfix no-top-space no-bottom-space"></div>
+                         </div>
+                      </div>
+                     </div>  
+                    <!-- END NOTIFICATIONS PORTAL-->
+
+                   <div class="row-block-two">
+                    <!-- BEGIN PROGRESS PORTAL-->
+
+                     <div ng-controller="tasksCtrl" class="widget purple">
+                        <div class="widget-title">
+                            <h4><i class="fa fa-server icon-padding" aria-hidden="true"></i> Task In progress </h4>
+                            <span class="widget-options">
+                                <a href="#" class="fa fa-angle-down icon-padding" aria-hidden="true"></a>
+                                <a href="#" class="fa fa-times icon-padding" aria-hidden="true"></a>
+                            </span>
+                        </div>
+                        <div class="widget-body">
+                            <ul class="unstyled">
+                                                                                         
+                                 <li ng-repeat="task in progressbars">
+                                     <span class="btn-size special-btn"> <i class="fa fa-angle-double-right icon-padding" aria-hidden="true"></i></span>
+                                     <span>{{task.taskname}}</span>
+                                     <strong style="text-align:center; background-color:green;"> {{task.percent}}</strong>
+                                     <div class="space10"></div>
+                                     <div class="progress">
+                                        <div style="width: {{task.percent}}; background-color:{{task.color}};" class="bar"></div>
+                                    </div>                                    
+                                 </li>
+                            </ul>
+                          </div>
+                       </div>
+                     </div>
+                      <!-- END PROGRESS PORTAL -->
+
+                     <div class="row-block-two">
+                        <!-- BEGIN ALERTS PORTAL -->
+                      <div ng-controller="alertsCtrl" class="widget orange">
+                        <div class="widget-title">
+                            <h4><i class="fa fa-bell-o icon-padding" aria-hidden="true"></i> Alerts</h4>
+                            <span class="widget-options">
+                            <a class="fa fa-angle-down icon-padding" aria-hidden="true" href="#"></a>
+                            <a class="fa fa-times icon-padding" aria-hidden="true" href="#"></a>
+                            </span>
+                        </div>
+                        <div class="widget-body"  ng-repeat="alert in alerts" >
+                            <div class="alerts alert-{{alert.alertname}}">
+                            <a class="fa fa-times icon-padding alert-btn" aria-hidden="true" href="#"></a>
+                            <strong class="alert-strong">{{alert.alertname}}!</strong> {{alert.message}}
+                            </div>
+                        </div>
+                      </div>
+                    <!-- END ALERTS PORTAL -->
+                    </div>    
+               </div>
+               <!-- THIRD ROW ENDS IN PAGE CONTENT-->
+         </section>
+
+      </div>
+    
+    </main>
+    <!-- PAGE MAIN-CONTENT END-->
+ </body>
+</html>
